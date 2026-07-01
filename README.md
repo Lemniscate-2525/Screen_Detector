@@ -5,7 +5,9 @@
 predict.py  -> Main file; python predict.py any_test_set_image.jpg. 
 
 predictor.py  -> Loads MobileNetV2, extracts embeddings, applies trained classifier.
+
 train.py  -> Extracts embeddings from dataset/, fits logistic regression, saves model_weights.json.
+
 evaluate.py  -> Runs the trained model against dataset/ and prints confusion matrix + latency.
 
 model_weights.json  -> Trained classifier weights.
