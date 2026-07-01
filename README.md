@@ -1,6 +1,6 @@
-## Screen_Detector
+# Screen_Detector
 
-# Project Structure : 
+## Project Structure : 
 
 predict.py  -> Main file; python predict.py any_test_set_image.jpg. 
 
@@ -10,7 +10,7 @@ evaluate.py  -> Runs the trained model against dataset/ and prints confusion mat
 
 model_weights.json  —> Trained classifier weights.
 
-# Approach :
+## Approach :
 
 1. Rather than hand-deriving features from first principles (moiré/FFT analysis, glare shape, texture uniformity, edge geometry), I extracted a 1280-dimensional embedding from **MobileNetV2**, pretrained on ImageNet with it's classification head removed. The CNN here is used purely as a fixed feature extractor not a Neural Network, identical in spirit to using a calculator someone else built.
 
@@ -20,7 +20,7 @@ model_weights.json  —> Trained classifier weights.
  
 5. This indicated that handcrafted signals were too subtle or too dependent to generalize reliably from just 100 images. So, I changed the approach to pretrained embeddings.
 
-# Results :
+## Results :
 
 **Accuracy :**
 *90.0% (+/- 6.3%) accuracy* under 5-fold stratified cross-validation on 100 self-collected images (50 real, 50 screen recaptures across phone, laptop, and TV displays, varied lighting, angle, and distance). This is the honest, held-out estimate; in-sample accuracy on the full training set is 100%, which I am explicitly not reporting as my accuracy, since that reflects memorization rather than generalization.
@@ -34,7 +34,7 @@ Cost on device is effectively 0 , the model runs locally on the user's phone wit
 
 Cloud server : If we assume a single CPU core processing sequentially at ~215ms/image (~4.6 images/sec) on a low-cost instance (~$0.02/hour, e.g. AWS t3.small equivalent), cost works out to roughly **$0.0012 per 1,000 images**, or about **$1.20 per million images**. These are rough estimates assuming single-threaded CPU inference with no batching or GPU acceleration, both of which would lower cost further at scale.
 
-# Improvements : 
+## Improvements : 
 
 1. More data; 100 images is very small for a held-out evaluation that needs to generalize across hardware I haven't seen, more images across more phone models and screen types would increase accuracy and probably get a better generalization.
 
