@@ -35,7 +35,7 @@ I expect some drop on SalesCode's held-out photos given differences in phone har
 **Cost per image :**
 Cost on device is effectively 0 , the model runs locally on the user's phone with no server round-trip. MobileNetV2 is already designed for mobile deployment (~14MB), so this is the intended long-term path.
 
-Cloud server : If we assume a single CPU core processing sequentially at ~215ms/image (~4.6 images/sec) on a low-cost instance (~$0.02/hour, e.g. AWS t3.small equivalent), cost works out to roughly **$0.0012 per 1,000 images**, or about **$1.20 per million images**. These are rough estimates assuming single-threaded CPU inference with no batching or GPU acceleration, both of which would lower cost further at scale.
+Cloud server : If we assume a single CPU core processing sequentially at 215ms/image (4.6 images/sec) on a low-cost instance ($0.02/hour, e.g. AWS t3.small equivalent), cost works out to roughly **$0.0012 per 1,000 images**, or about **$1.20 per million images**. These are rough estimates assuming single-threaded CPU inference with no batching or GPU acceleration, both of which would lower cost further at scale.
 
 ## Improvements : 
 
