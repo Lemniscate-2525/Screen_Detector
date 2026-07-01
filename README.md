@@ -1,5 +1,15 @@
 # Screen_Detector
 
+# Project Structure : 
+
+predict.py  -> Main file; python predict.py any_test_set_image.jpg. 
+
+predictor.py  -> Loads MobileNetV2, extracts embeddings, applies trained classifier.
+train.py  -> Extracts embeddings from dataset/, fits logistic regression, saves model_weights.json.
+evaluate.py  -> Runs the trained model against dataset/ and prints confusion matrix + latency.
+
+model_weights.json  —> Trained classifier weights.
+
 # Approach :
 
 1. Rather than hand-deriving features from first principles (moiré/FFT analysis, glare shape, texture uniformity, edge geometry), I extracted a 1280-dimensional embedding from **MobileNetV2**, pretrained on ImageNet with it's classification head removed. The CNN here is used purely as a fixed feature extractor not a Neural Network, identical in spirit to using a calculator someone else built.
